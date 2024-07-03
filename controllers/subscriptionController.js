@@ -32,11 +32,8 @@ const deleteSubscription = (req, res) => {
 
 const getAllSubscriptionCategories = (req, res) => {
   let userId = req.params.userId;
-  let category = req.params.category;
-  let categories = mySubscription.getAllSubscriptionCategories(
-    userId,
-    category
-  );
+
+  let categories = mySubscription.getAllSubscriptionCategories(userId);
   res.status(200);
   res.send({ res: categories });
 };

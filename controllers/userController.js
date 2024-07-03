@@ -1,23 +1,25 @@
-const User = require("../libraries/userLibrary");
+const UserClass = require("../libraries/userLibrary");
 
-let myUser = new User();
+let myUser = new UserClass();
 
-const getUserById = (req, res) => {
+const getUserById = async (req, res) => {
   let userId = req.params.userId;
-  let user = myUser.getUserById(userId);
+  let user = await myUser.getUserById(userId);
   res.status(200);
   res.send({ res: user });
 };
 
 const updateUser = (req, res) => {
   let userId = req.params.userId;
-  let user = myUser.updateUser(userId, req.body);
+  let userData = req.body;
+  let user = myUser.updateUser(userId, userData);
   res.status(200);
   res.send({ res: user });
 };
 
 const createUser = (req, res) => {
-  let user = myUser.createUser(req.body);
+  let userData = req.body;
+  let user = myUser.createUser(userData);
   res.status(200);
   res.send({ res: user });
 };
