@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "axios": "^1.7.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.4.4",
+    "nodemon": "^3.1.4"
+  },
+  "name": "capstone-mst-backend",
+  "version": "1.0.0",
+  "description": "TrackMySubs' backend, built with Node.js and MongoDB, securely manages user subscriptions, authentication, and cost analysis. It efficiently handles diverse subscription details, providing real-time insights. This robust backend ensures seamless tracking and helps users make informed decisions about their subscription spending.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Jarrod Jackson",
+  "license": "ISC"
+}
