@@ -2,13 +2,17 @@ let express = require("express");
 let router = express.Router();
 let userControllers = require("../controllers/userController");
 
-//Find user by id
-router.get("api/user/:id", userControllers.getUserById(req, res));
+//Find user by email
+router.get("api/user/:userId", (req, res) => {
+  userControllers.getUserById(req, res);
+});
 
 //Update user details
-router.put("api/user/:id", userControllers.updateUser(req, res));
+router.put("api/user/:userId", (req, res) =>
+  userControllers.updateUser(req, res)
+);
 
 //Create new user
-router.post("api/user/", userControllers.createUser(req, res));
+router.post("/", (req, res) => userControllers.createUser(req, res));
 
 module.exports = router;

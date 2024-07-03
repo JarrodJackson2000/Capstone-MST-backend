@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to my MongoDB application." });
 });
 // set port, listen for requests
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 app.use("/api/user", userRoutes);
 app.use("/api/subscription", subscriptionRoutes);

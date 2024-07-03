@@ -6,7 +6,7 @@ const getAllCostsByUserId = (req, res) => {
   let id = req.params.id;
   let costs = myCost.getAllCostsByUserId(id);
   res.status(200);
-  res.send({ result: costs });
+  res.send({ costs });
 };
 
 const getAllCostsByCategory = (req, res) => {
@@ -14,14 +14,7 @@ const getAllCostsByCategory = (req, res) => {
   let category = req.params.category;
   let costs = myCost.getAllCostsByCategory(id, category);
   res.status(200);
-  res.send({ result: costs });
+  res.send({ costs });
 };
 
-const getCostById = (req, res) => {
-  let id = req.params.id;
-  let cost = myCost.getCostById(id);
-  res.status(200);
-  res.send({ result: cost });
-};
-
-module.exports = { getAllCostsByUserId, getAllCostsByCategory, getCostById };
+module.exports = { getAllCostsByUserId, getAllCostsByCategory };

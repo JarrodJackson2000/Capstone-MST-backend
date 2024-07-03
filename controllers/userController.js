@@ -3,23 +3,23 @@ const User = require("../libraries/userLibrary");
 let myUser = new User();
 
 const getUserById = (req, res) => {
-  let id = req.params.id;
-  let user = myUser.getUserById(id);
+  let userId = req.params.userId;
+  let user = myUser.getUserById(userId);
   res.status(200);
-  res.send({ result: user });
+  res.send({ res: user });
 };
 
 const updateUser = (req, res) => {
-  let id = req.params.id;
-  let user = myUser.updateUser(id);
+  let userId = req.params.userId;
+  let user = myUser.updateUser(userId, req.body);
   res.status(200);
-  res.send({ result: user });
+  res.send({ res: user });
 };
 
-const createUser = (res) => {
-  let user = myUser.createUser();
+const createUser = (req, res) => {
+  let user = myUser.createUser(req.body);
   res.status(200);
-  res.send({ result: user });
+  res.send({ res: user });
 };
 
 module.exports = { getUserById, updateUser, createUser };

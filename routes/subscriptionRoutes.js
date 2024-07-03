@@ -3,18 +3,28 @@ let router = express.Router();
 let subscriptionControllers = require("../controllers/subscriptionController");
 
 //Get operation for finding all of a users subscriptions
-router.get("/:id", subscriptionControllers.getAllSubscriptionsById(req, res));
+router.get("/:userId", (req, res) =>
+  subscriptionControllers.getAllSubscriptionsByUserId(req, res)
+);
 
 //Post operation for creating new subscription entries for users
-router.post(":id", subscriptionControllers.createSubscription(req, res));
+router.post(":userId", (req, res) =>
+  subscriptionControllers.createSubscription(req, res)
+);
 
 //Put operation for updating a subscription entry
-router.put(":id", subscriptionControllers.updateSubscription(req, res));
+router.put(":subId", (req, res) =>
+  subscriptionControllers.updateSubscription(req, res)
+);
 
 //Delete operation for removing a subscription entry
-router.delete(":id", subscriptionControllers.deleteSubscription(req, res));
+router.delete(":subId", (req, res) =>
+  subscriptionControllers.deleteSubscription(req, res)
+);
 
-//Get operation for finding a collection of all subscription ids for a user
-router.get(":id", subscriptionControllers.getAllSubscriptionIds(req, res));
+//Get operation for finding all of the users subscription categories
+router.get(":userId/:category", (req, res) =>
+  subscriptionControllers.getAllSubscriptionCategories(req, res)
+);
 
 module.exports = router;

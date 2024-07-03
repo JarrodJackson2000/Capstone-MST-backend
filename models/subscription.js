@@ -12,4 +12,4 @@ const subscriptionSchema = new Schema({
   updatedAt: { type: Date, default: Date.now },
 });
 
-module.exports = mongoose.model("Subscription", subscriptionSchema);
+module.exports = mongoose.model("subscription", subscriptionSchema);

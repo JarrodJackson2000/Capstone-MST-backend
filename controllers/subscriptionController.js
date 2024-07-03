@@ -2,45 +2,49 @@ const Subscription = require("../libraries/subscriptionLibrary");
 
 let mySubscription = new Subscription();
 
-const getAllSubscriptionsById = (req, res) => {
-  let id = req.params.id;
-  let subscriptions = mySubscription.getAllSubscriptionsById(id);
+const getAllSubscriptionsByUserId = (req, res) => {
+  let userId = req.params.userId;
+  let subscriptions = mySubscription.getAllSubscriptionsByUserId(userId);
   res.status(200);
-  res.send({ result: subscriptions });
+  res.send({ res: subscriptions });
 };
 
 const createSubscription = (req, res) => {
-  let id = req.params.id;
-  let subscription = mySubscription.createSubscription(id);
+  let userId = req.params.userId;
+  let subscription = mySubscription.createSubscription(userId, req.body);
   res.status(200);
-  res.send({ result: subscription });
+  res.send({ res: subscription });
 };
 
 const updateSubscription = (req, res) => {
-  let id = req.params.id;
-  let subscription = mySubscription.updateSubscription(id);
+  let subId = req.params.subId;
+  let subscription = mySubscription.updateSubscription(subId, req.body);
   res.status(200);
-  res.send({ result: subscription });
+  res.send({ res: subscription });
 };
 
 const deleteSubscription = (req, res) => {
-  let id = req.params.id;
-  let subscription = mySubscription.deleteSubscription(id);
+  let subId = req.params.subId;
+  let subscription = mySubscription.deleteSubscription(subId);
   res.status(200);
-  res.send({ result: subscription });
+  res.send({ res: subscription });
 };
 
-const getAllSubscriptionIds = (req, res) => {
-  let id = req.params.id;
-  let subscriptionIds = mySubscription.getAllSubscriptionIds(id);
+const getAllSubscriptionCategories = (req, res) => {
+  let userId = req.params.userId;
+  let category = req.params.category;
+  let categories = mySubscription.getAllSubscriptionCategories(
+    userId,
+    category
+  );
   res.status(200);
-  res.send({ result: subscriptionIds });
+  res.send({ res: categories });
 };
 
 module.exports = {
-  getAllSubscriptionsById,
+  getAllSubscriptionsByUserId,
   createSubscription,
   updateSubscription,
   deleteSubscription,
-  getAllSubscriptionIds,
+  getAllSubscriptionCategories,
 };
