@@ -3,8 +3,8 @@ let router = express.Router();
 let userControllers = require("../controllers/userController");
 
 //Find user by email
-router.get("/:userId", (req, res) => {
-  userControllers.getUserById(req, res);
+router.get("/:userValue", (req, res) => {
+  userControllers.getUserByUserEmailOrId(req, res);
 });
 
 //Update user details

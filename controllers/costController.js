@@ -2,17 +2,17 @@ const Cost = require("../libraries/costLibrary");
 
 let myCost = new Cost();
 
-const getAllCostsByUserId = (req, res) => {
-  let id = req.params.id;
-  let costs = myCost.getAllCostsByUserId(id);
+const getAllCostsByUserId = async (req, res) => {
+  let userId = req.params.userId;
+  let costs = await myCost.getAllCostsByUserId(userId);
   res.status(200);
   res.send({ costs });
 };
 
-const getAllCostsByCategory = (req, res) => {
-  let id = req.params.id;
+const getAllCostsByCategory = async (req, res) => {
+  let userId = req.params.userId;
   let category = req.params.category;
-  let costs = myCost.getAllCostsByCategory(id, category);
+  let costs = await myCost.getAllCostsByCategory(userId, category);
   res.status(200);
   res.send({ costs });
 };

@@ -9,6 +9,7 @@ class Subscription {
 
   async getAllSubscriptionsByUserId(userId) {
     let result = await Models.Subscription.find({ userId: userId });
+    console.log(result);
     return result;
   }
 
@@ -33,6 +34,7 @@ class Subscription {
 
   async getAllSubscriptionCategories(userId) {
     let result = await Models.Subscription.find({ userId: userId });
+    console.log(result);
     let categories = [];
     result.forEach((sub) => {
       if (!categories.includes(sub.category)) {

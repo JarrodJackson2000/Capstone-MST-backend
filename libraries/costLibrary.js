@@ -8,20 +8,25 @@ class Cost {
 
   async getAllCostsByUserId(userId) {
     let result = await Models.Subscription.find({ userId: userId });
-    let allCosts = [];
+    let totalCost = 0;
     result.forEach((sub) => {
-      allCosts.push(sub.cost);
+      totalCost = totalCost + sub.cost;
     });
-    return allCosts;
+    return totalCost;
   }
 
   async getAllCostsByCategory(userId, category) {
-    let result = await Models.Cost.find({ userId: userId, category: category });
-    let allCostsByCategory = [];
-    result.forEach((sub) => {
-      allCostsByCategoryCostsByCategory.push(sub.cost);
+    let result = await Models.Subscription.find({
+      userId: userId,
+      category: category,
+    }).then((result) => {
+      let allCosts = 0;
+      result.forEach((sub) => {
+        allCosts = allCosts + sub.cost;
+      });
+      return allCosts;
     });
-    return allCostsByCategory;
+    return result;
   }
 }
 

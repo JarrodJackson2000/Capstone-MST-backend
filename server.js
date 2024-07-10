@@ -4,10 +4,12 @@ require("dotenv").config();
 const userRoutes = require("./routes/userRoutes");
 const subscriptionRoutes = require("./routes/subscriptionRoutes");
 const costRoutes = require("./routes/costRoutes");
+const cors = require("cors");
 
 let dbConnect = require("./dbConnect");
 
 app.use(express.json());
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to my MongoDB application." });

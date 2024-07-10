@@ -1,15 +1,34 @@
 "use strict";
 let Models = require("../models");
+const { ObjectId } = require("mongoose").Types;
 
 class UserClass {
   constructor() {
     console.log("User class is created");
   }
 
-  async getUserById(userId) {
-    console.log(userId);
-    let result = await Models.User.findOne({ _id: userId });
-    return result;
+  async getUserByUserEmailOrId(userValue, type) {
+    console.log(userValue);
+
+    try {
+      let query = {};
+
+      if (type == "string") {
+        query = { email: userValue };
+      } else if (type == "objectId") {
+        query = { _id: userValue };
+      } else {
+        throw new Error("Invalid user value");
+      }
+
+      let result = await Models.User.findOne(query);
+
+      console.log(result);
+      return result;
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
   }
 
   async updateUser(userId, userData) {

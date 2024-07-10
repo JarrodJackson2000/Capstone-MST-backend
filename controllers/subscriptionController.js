@@ -2,38 +2,38 @@ const Subscription = require("../libraries/subscriptionLibrary");
 
 let mySubscription = new Subscription();
 
-const getAllSubscriptionsByUserId = (req, res) => {
+const getAllSubscriptionsByUserId = async (req, res) => {
   let userId = req.params.userId;
-  let subscriptions = mySubscription.getAllSubscriptionsByUserId(userId);
+  let subscriptions = await mySubscription.getAllSubscriptionsByUserId(userId);
   res.status(200);
-  res.send({ res: subscriptions });
+  res.send({ subscriptions });
 };
 
-const createSubscription = (req, res) => {
+const createSubscription = async (req, res) => {
   let userId = req.params.userId;
-  let subscription = mySubscription.createSubscription(userId, req.body);
+  let subscription = await mySubscription.createSubscription(userId, req.body);
   res.status(200);
   res.send({ res: subscription });
 };
 
-const updateSubscription = (req, res) => {
+const updateSubscription = async (req, res) => {
   let subId = req.params.subId;
-  let subscription = mySubscription.updateSubscription(subId, req.body);
+  let subscription = await mySubscription.updateSubscription(subId, req.body);
   res.status(200);
   res.send({ res: subscription });
 };
 
-const deleteSubscription = (req, res) => {
+const deleteSubscription = async (req, res) => {
   let subId = req.params.subId;
-  let subscription = mySubscription.deleteSubscription(subId);
+  let subscription = await mySubscription.deleteSubscription(subId);
   res.status(200);
   res.send({ res: subscription });
 };
 
-const getAllSubscriptionCategories = (req, res) => {
+const getAllSubscriptionCategories = async (req, res) => {
   let userId = req.params.userId;
 
-  let categories = mySubscription.getAllSubscriptionCategories(userId);
+  let categories = await mySubscription.getAllSubscriptionCategories(userId);
   res.status(200);
   res.send({ res: categories });
 };

@@ -2,9 +2,10 @@ const UserClass = require("../libraries/userLibrary");
 
 let myUser = new UserClass();
 
-const getUserById = async (req, res) => {
-  let userId = req.params.userId;
-  let user = await myUser.getUserById(userId);
+const getUserByUserEmailOrId = async (req, res) => {
+  let userValue = req.params.userValue;
+  let type = req.query.type;
+  let user = await myUser.getUserByUserEmailOrId(userValue, type);
   res.status(200);
   res.send({ res: user });
 };
@@ -24,4 +25,4 @@ const createUser = (req, res) => {
   res.send({ res: user });
 };
 
-module.exports = { getUserById, updateUser, createUser };
+module.exports = { getUserByUserEmailOrId, updateUser, createUser };
