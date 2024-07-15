@@ -11,6 +11,9 @@ class UserClass {
     console.log(userValue);
 
     try {
+      // This API is used in 2 seperate instances in the frontend. One parses the user email and the other parses the user id.
+      // This is why we need to check the type of the userValue and query the database accordingly.
+      // If the type is string, we query the database with the email. If the type is objectId, we query the database with the id.
       let query = {};
 
       if (type == "string") {

@@ -2,6 +2,8 @@ const UserClass = require("../libraries/userLibrary");
 
 let myUser = new UserClass();
 
+// Get user by email or id
+
 const getUserByUserEmailOrId = async (req, res) => {
   let userValue = req.params.userValue;
   let type = req.query.type;
@@ -10,6 +12,8 @@ const getUserByUserEmailOrId = async (req, res) => {
   res.send({ res: user });
 };
 
+// Update user
+
 const updateUser = (req, res) => {
   let userId = req.params.userId;
   let userData = req.body;
@@ -17,6 +21,8 @@ const updateUser = (req, res) => {
   res.status(200);
   res.send({ res: user });
 };
+
+// Create user
 
 const createUser = (req, res) => {
   let userData = req.body;
